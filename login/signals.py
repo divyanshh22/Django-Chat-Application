@@ -5,4 +5,7 @@ from .models import CustomUser, ProfilePic
 @receiver(post_save, sender=CustomUser)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        ProfilePic.objects.create(user=instance)
+        try:
+            ProfilePic.objects.create(user=instance)
+        except Exception as e:
+            print(f"Error creating profile: {e}")
