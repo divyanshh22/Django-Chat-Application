@@ -3,16 +3,19 @@ services:
     name: django-chat-app
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
-    startCommand: gunicorn chattingapp.wsgi:application
+    buildCommand: >
+      pip install -r requirements.txt &&
+      python manage.py collectstatic --no-input &&
+      python manage.py migrate
+    startCommand: gunicorn chattingapp.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DATABASE_URL
         scope: all
       - key: SECRET_KEY
         scope: all
       - key: DEBUG
-        value: false
-        scope: all
+        value: "False"
       - key: ALLOWED_HOSTS
-        value: "*"
-        scope: all
+        value: "*.onrender.com,localhost"
+      - key: PORT
+        value: "8000"
