@@ -64,6 +64,9 @@ def register_view(request):
             messages.success(request, "Account created successfully!")
             return redirect('login-view')
         except Exception as e:
+            import traceback
+            print(f"Registration Error: {str(e)}")
+            print(traceback.format_exc())
             messages.error(request, f"Error: {str(e)}")
             return redirect('register-view')
 
