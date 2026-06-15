@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+
+# Local media directory (user uploads)
+media/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+Active.custom
+
+# PyCharm / IDE settings
+.idea/
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
