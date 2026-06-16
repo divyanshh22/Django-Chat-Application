@@ -5,8 +5,9 @@ services:
     plan: free
     buildCommand: >
       pip install -r requirements.txt &&
+      python manage.py migrate &&
       python manage.py collectstatic --no-input
-    startCommand: sh -c 'python manage.py migrate && gunicorn chattingapp.wsgi:application --bind 0.0.0.0:$PORT --workers 1'
+    startCommand: gunicorn chattingapp.wsgi:application --bind 0.0.0.0:$PORT --workers 1
 
     envVars:
       - key: DATABASE_URL
